@@ -2,51 +2,89 @@
 //  Each of these objects should roughly follow the format below.
 // Dependencies
 // =============================================================
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
 
-// Sets up the Express App
-// =============================================================
-var app = express();
-var PORT = 3000;
-
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 // ```json
-
-
-// {
-//   "name":"Ahmed",
-//   "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
-//   "scores":[
-//       5,
-//       1,
-//       4,
-//       4,
-//       5,
-//       1,
-//       2,
-//       5,
-//       4,
-//       1
-//     ]
-// }
-// ```
-
-// 6. Determine the user's most compatible friend using the following as a guide:
-
-//    * Convert each user's results into a simple array of numbers (ex: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`).
-//    * With that done, compare the difference between current user's scores against those from other users,
-//      question by question. Add up the differences to calculate the `totalDifference`.
-//      * Example: 
-//        * User 1: `[5, 1, 4, 4, 5, 1, 2, 5, 4, 1]`
-//        * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
-//        * Total Difference: **2 + 1 + 2 =** **_5_**
-//    * Remember to use the absolute value of the differences. Put another way: no negative solutions!
-//      Your app should calculate both `5-3` and `3-5` as `2`, and so on. 
-//    * The closest match will be the user with the least amount of difference.
-
-// 7. Once you've found the current user's most compatible friend, display the result as a modal pop-up.
-//    * The modal should display both the name and picture of the closest match.
+var friendArray = [
+    {
+        "name": "Sergio",
+        "photo": "https://am11.akamaized.net/med/cnt/uploads/2010/01/Screen-shot-2010-01-31-at-11.47.04-AM-e1264957975704.png",
+        "scores": [
+            5,
+            1,
+            4,
+            4,
+            5,
+            1,
+            2,
+            5,
+            4,
+            1
+        ]
+    },
+    {
+        "name": "Baron Harkonnen",
+        "photo": "http://baskino.me/uploads/images/2013/104/oqnx12.jpg",
+        "scores": [
+            5,
+            5,
+            5,
+            5,
+            3,
+            5,
+            5,
+            5,
+            5,
+            5
+        ]
+    },
+    {
+        "name": "Hatchet Face",
+        "photo": "http://images.tmz.com/2016/09/15/0915-hatchet-face-kim-macguire-cry-baby-5.jpg",
+        "scores": [
+            5,
+            5,
+            5,
+            5,
+            3,
+            3,
+            3,
+            5,
+            5,
+            5
+        ]
+    },
+    {
+        "name": "Evil Lynn",
+        "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBCzJN2jYwe6IDoShgz21y5fvOVg-EbvQTfM1VzKnv6QvejX-E",
+        "scores": [
+            3,
+            5,
+            3,
+            5,
+            3,
+            5,
+            3,
+            5,
+            3,
+            5
+        ]
+    },
+    {
+        "name": "Queen Akasha",
+        "photo": "https://ace_hotel_dev.s3.amazonaws.com/images/queen_of_the_damned.jpg",
+        "scores": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    }
+];
+  // module exports to for require to function correctly
+  module.exports = friendArray;
