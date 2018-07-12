@@ -1,6 +1,6 @@
 var path = require("path");
 // Your `apiRoutes.js` file should contain two routes:
-var userData = require("../data/friends.js");
+var friendArray = require("../data/friends.js");
 
 
 // ===============================================================================

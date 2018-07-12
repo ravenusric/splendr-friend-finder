@@ -17,16 +17,13 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(bodyParser.text());
 
 // JS Links to go on bottom 
-app.get("/apiroutes.js", function(req, res) {
-    res.sendFile(path.join(__dirname, "../routing/apiroutes.js"))
-});
+// Add the application routes
+require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
-app.get("/htmlroutes.js",function(req,res) {
-    res.sendFile(path.join(__dirname, "../routing/htmlroutes.js"))
-});
 
 app.listen(PORT, function() {
     // Log (server-side) when our server has started
