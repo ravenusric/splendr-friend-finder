@@ -2,7 +2,7 @@
 //  Each of these objects should roughly follow the format below.
 // =============================================================
 
-var specialfriends = [
+var friends = [
     {
         "name": "Sergio",
         "photo": "https://am11.akamaized.net/med/cnt/uploads/2010/01/Screen-shot-2010-01-31-at-11.47.04-AM-e1264957975704.png",
@@ -85,4 +85,4 @@ var specialfriends = [
     }
 ];
   // module exports for require to function correctly
-  module.exports = specialfriends;
+  module.exports = friends;

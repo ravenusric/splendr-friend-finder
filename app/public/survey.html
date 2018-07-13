@@ -50,8 +50,11 @@
         </div>
 
         <!-- Pic Upload -->
-        <h3>Link Your Photo Here (Required)</h3>
-        <input type="text" id="photo" class="form-control" required>
+        <div class="input-group mb-3">
+            <h3>Link to Photo Image (Required)</h3>
+            <input type="text" class="validate" placeholder="Photo Link Here" id="photo">
+        </div>
+
         <br>
 
         <div class="input-group mb-3">
@@ -275,10 +278,11 @@
                 };
                 var currentURL = window.location.origin;
                 // Ajax call for receiving response after POST req
-                $.post(currentURL + "/api/friends", newFriend, function (data) {
-                    $("#specialFriend").text(data.name);
-                    $("#specialFriendPhoto").attr("src", data.photo);
-                    $("#specialFriendModal").modal("toggle");
+                $.post('/api/friends', newFriend)
+      		.done(function(data) {
+      			$('#specialFriend').html(data.name);
+		    	$("#specialFriendPhoto").attr("src", data.photo);
+      			$('#specialFriendModal').modal('open');
                 });
             } else {
                 // If a required field is missing, show alert

@@ -21,8 +21,8 @@ app.use(bodyParser.text());
 
 // JS Links to go on bottom 
 // Add the application routes
-require(path.join(__dirname, './app/routing/apiRoutes'))(app);
-require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
+require(path.join(__dirname, './app/routing/apiroutes'))(app);
+require(path.join(__dirname, './app/routing/htmlroutes'))(app);
 
 
 app.listen(PORT, function() {

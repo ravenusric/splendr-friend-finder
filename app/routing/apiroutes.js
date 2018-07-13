@@ -1,5 +1,5 @@
 // Your `apiRoutes.js` file should contain two routes:
-var specialfriends = require("../data/friends");
+var friends = require("../data/friends.js");
 
 
 // ===============================================================================
@@ -12,7 +12,7 @@ module.exports = function(app) {
 // This route will also be used to handle the compatibility logic.
 // Basic route that sends the user first to the AJAX Page
 // Displays all friends
-app.get("/api/specialfriends", function(req, res) {
+app.get("/api/friends", function(req, res) {
     return res.json(friends);
   });
   
@@ -22,7 +22,7 @@ app.get("/api/specialfriends", function(req, res) {
 // ====================================================================
 
 // Create New friends - takes in JSON input
-  app.post("/api/specialfriends", function(req, res) {
+  app.post("/api/friends", function(req, res) {
   console.log(req.body.scores);
 
   // Receive user details (name, photo, scores)
@@ -34,27 +34,27 @@ app.get("/api/specialfriends", function(req, res) {
   }
 
   // default friend match is the first friend but result will be whoever has the minimum difference in scores
-  var specialFriendIndex = 0;
+  var friendIndex = 0;
   var minDifference = 50;
 
   //  The difference is added to the total difference
-    for(var i = 0; i < specialfriends.length; i++) {
+    for(var i = 0; i < friends.length; i++) {
     var totalDifference = 0;
-    for(var j = 0; j < specialfriends[i].scores.length; j++) {
-      var difference = Math.abs(user.scores[j] - specialfriends[i].scores[j]);
+    for(var j = 0; j < friends[i].scores.length; j++) {
+      var difference = Math.abs(user.scores[j] - friends[i].scores[j]);
       totalDifference += difference;
     }
 
     if(totalDifference < minDifference) {
-      specialFriendIndex = i;
+      friendIndex = i;
       minDifference = totalDifference;
     }
   }
 
   // after finding match, add user to friend array
-  specialfriends.push(user);
+  friends.push(user);
 
   // send back to browser the best friend match
-  res.json(specialfriends[specialFriendIndex]);
+  res.json(friends[friendIndex]);
 });
 };
