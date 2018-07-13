@@ -1,6 +1,5 @@
-var path = require("path");
 // Your `apiRoutes.js` file should contain two routes:
-var friendArray = require("../data/friends.js");
+var specialfriends = require("../data/friends");
 
 
 // ===============================================================================
@@ -13,7 +12,7 @@ module.exports = function(app) {
 // This route will also be used to handle the compatibility logic.
 // Basic route that sends the user first to the AJAX Page
 // Displays all friends
-app.get("/api/friends", function(req, res) {
+app.get("/api/specialfriends", function(req, res) {
     return res.json(friends);
   });
   
@@ -23,7 +22,7 @@ app.get("/api/friends", function(req, res) {
 // ====================================================================
 
 // Create New friends - takes in JSON input
-  app.post("/api/friends", function(req, res) {
+  app.post("/api/specialfriends", function(req, res) {
   console.log(req.body.scores);
 
   // Receive user details (name, photo, scores)
@@ -39,10 +38,10 @@ app.get("/api/friends", function(req, res) {
   var minDifference = 50;
 
   //  The difference is added to the total difference
-    for(var i = 0; i < friends.length; i++) {
+    for(var i = 0; i < specialfriends.length; i++) {
     var totalDifference = 0;
-    for(var j = 0; j < friends[i].scores.length; j++) {
-      var difference = Math.abs(user.scores[j] - friends[i].scores[j]);
+    for(var j = 0; j < specialfriends[i].scores.length; j++) {
+      var difference = Math.abs(user.scores[j] - specialfriends[i].scores[j]);
       totalDifference += difference;
     }
 
@@ -53,9 +52,9 @@ app.get("/api/friends", function(req, res) {
   }
 
   // after finding match, add user to friend array
-  friends.push(user);
+  specialfriends.push(user);
 
   // send back to browser the best friend match
-  res.json(friends[specialFriendIndex]);
+  res.json(specialfriends[specialFriendIndex]);
 });
 };

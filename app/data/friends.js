@@ -1,10 +1,8 @@
 // You should save your application's data inside of `app/data/friends.js` as an array of objects.
 //  Each of these objects should roughly follow the format below.
-// Dependencies
 // =============================================================
 
-// ```json
-var friendArray = [
+var specialfriends = [
     {
         "name": "Sergio",
         "photo": "https://am11.akamaized.net/med/cnt/uploads/2010/01/Screen-shot-2010-01-31-at-11.47.04-AM-e1264957975704.png",
@@ -86,5 +84,5 @@ var friendArray = [
         ]
     }
 ];
-  // module exports to for require to function correctly
-  module.exports = friendArray;
+  // module exports for require to function correctly
+  module.exports = specialfriends;
